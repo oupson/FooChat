@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:orientation="horizontal"
+    android:backgroundTint="?colorSurface">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_sharp_smartphone_24"
+        android:tint="?colorOnSurface" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/deviceItemNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/deviceItemMacTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

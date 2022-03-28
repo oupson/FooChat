@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="primary_900">#263238</color>
+    <color name="primary_800">#37474f</color>
+    <color name="primary_700">#455a64</color>
+    <color name="primary_600">#546e7a</color>
+    <color name="primary_500">#607d8b</color>
+    <color name="primary_400">#78909c</color>
+    <color name="primary_300">#90a4ae</color>
+    <color name="primary_200">#b0bec5</color>
+    <color name="primary_100">#cfd8dc</color>
+    <color name="primary_50">#eceff1</color>
+
+    <color name="secondary_900">#1a227e</color>
+    <color name="secondary_800">#283493</color>
+    <color name="secondary_700">#303e9f</color>
+    <color name="secondary_600">#3948ab</color>
+    <color name="secondary_500">#3f50b5</color>
+    <color name="secondary_400">#5c6ac0</color>
+    <color name="secondary_300">#7986cb</color>
+    <color name="secondary_200">#9fa8da</color>
+    <color name="secondary_100">#c5cae9</color>
+    <color name="secondary_50">#e8eaf6</color>
+
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
 </resources>
