@@ -13,7 +13,12 @@ import java.util.Objects;
 import fr.foo.foochat.databinding.DeviceItemBinding;
 
 public class BluetoothDeviceAdapter extends RecyclerView.Adapter<BluetoothDeviceAdapter.DeviceViewHolder> {
+    public interface OnItemClickListener {
+        void onItemClick(Device model);
+    }
+
     public List<Device> devicesList;
+    private final OnItemClickListener clickListener;
 
     public static class Device {
         private final String name;
@@ -56,7 +61,7 @@ public class BluetoothDeviceAdapter extends RecyclerView.Adapter<BluetoothDevice
         }
     }
 
-    static class DeviceViewHolder extends RecyclerView.ViewHolder {
+    class DeviceViewHolder extends RecyclerView.ViewHolder {
         private final DeviceItemBinding binding;
 
         public DeviceViewHolder(@NonNull DeviceItemBinding binding) {
@@ -67,12 +72,14 @@ public class BluetoothDeviceAdapter extends RecyclerView.Adapter<BluetoothDevice
         public void bind(Device device) {
             this.binding.deviceItemNameTextView.setText(device.getName());
             this.binding.deviceItemMacTextView.setText(device.getMacAddress());
+            this.binding.getRoot().setOnClickListener((v) -> BluetoothDeviceAdapter.this.clickListener.onItemClick(device));
         }
     }
 
-    public BluetoothDeviceAdapter(List<Device> devicesList) {
+    public BluetoothDeviceAdapter(List<Device> devicesList, OnItemClickListener clickListener) {
         super();
         this.devicesList = devicesList;
+        this.clickListener = clickListener;
     }
 
     @NonNull
