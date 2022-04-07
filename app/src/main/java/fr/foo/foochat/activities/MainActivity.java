@@ -12,9 +12,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.room.Room;
 
 import fr.foo.foochat.BuildConfig;
 import fr.foo.foochat.R;
+import fr.foo.foochat.database.AppDatabase;
 import fr.foo.foochat.databinding.ActivityMainBinding;
 import fr.foo.foochat.services.BluetoothListenerService;
 

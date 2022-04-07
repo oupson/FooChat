@@ -14,6 +14,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
+import androidx.room.Room;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import fr.foo.foochat.BuildConfig;
 import fr.foo.foochat.R;
 import fr.foo.foochat.activities.ConnectThread;
 import fr.foo.foochat.activities.MainActivity;
+import fr.foo.foochat.database.AppDatabase;
 
 public class BluetoothListenerService extends Service {
     private static final String TAG = "BluetoothLService";
@@ -156,5 +158,10 @@ public class BluetoothListenerService extends Service {
 
     public Map<String, ConnectThread> getClients() {
         return this.clients;
+    }
+
+    //Test de création de BD
+    public AppDatabase getDb() {
+        return Room.databaseBuilder(getBaseContext(), AppDatabase.class, "conv").build();
     }
 }
