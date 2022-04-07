@@ -36,6 +36,8 @@ public class BluetoothListenerService extends Service {
 
     private final Map<String, ConnectThread> clients = new HashMap<>();
 
+    private AppDatabase db = null;
+
     private class AcceptThread extends Thread {
         private final BluetoothServerSocket serverSocket;
         private final BluetoothAdapter bluetoothAdapter;
@@ -71,7 +73,7 @@ public class BluetoothListenerService extends Service {
                         Objects.requireNonNull(BluetoothListenerService.this.clients.get(mac)).cancel();
                     }
 
-                    ConnectThread c = new ConnectThread(bluetoothAdapter, socket);
+                    ConnectThread c = new ConnectThread(BluetoothListenerService.this, bluetoothAdapter, socket);
                     BluetoothListenerService.this.clients.put(mac, c);
                     c.start();
                     break;
@@ -145,7 +147,7 @@ public class BluetoothListenerService extends Service {
 
     // TODO CALLBACK
     public void connectToDevice(BluetoothDevice device) {
-        ConnectThread thread = new ConnectThread(acceptThread.bluetoothAdapter, device);
+        ConnectThread thread = new ConnectThread(this, acceptThread.bluetoothAdapter, device);
 
         String mac = device.getAddress();
         if (BluetoothListenerService.this.clients.containsKey(mac)) {
@@ -160,8 +162,4 @@ public class BluetoothListenerService extends Service {
         return this.clients;
     }
 
-    //Test de création de BD
-    public AppDatabase getDb() {
-        return Room.databaseBuilder(getBaseContext(), AppDatabase.class, "conv").build();
-    }
 }

@@ -6,15 +6,25 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Message {
-    @PrimaryKey
+    public Message() {
+
+    }
+
+    public Message(long date, String texte, byte[] image) {
+        this.date = date;
+        this.texte = texte;
+        this.image = image;
+    }
+
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
     @ColumnInfo(name = "date")
-    public String date; //Y a pas un type Date normalement ?
+    public long date; //Y a pas un type Date normalement ?
 
     @ColumnInfo(name = "texte")
     public String texte;
 
     @ColumnInfo(name = "image")
-    public String image;  //Le type sera quoi ??
+    public byte[] image;  //Le type sera quoi ??
 }

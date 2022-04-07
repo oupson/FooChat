@@ -12,23 +12,37 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.room.Room;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.foo.foochat.BuildConfig;
 import fr.foo.foochat.R;
+import fr.foo.foochat.adapters.ConversationAdapter;
 import fr.foo.foochat.database.AppDatabase;
+import fr.foo.foochat.database.Conversation;
 import fr.foo.foochat.databinding.ActivityMainBinding;
 import fr.foo.foochat.services.BluetoothListenerService;
 
 public class MainActivity extends AppCompatActivity {
     private static final int BLUETOOTH_REQUEST_CODE = 404;
     private ActivityMainBinding binding;
+    private final List<Conversation> conversationList = new ArrayList<>();
+    private final ConversationAdapter adapter = new ConversationAdapter(conversationList, (conv) -> {
+        Intent intent = new Intent(this, ConversationActivity.class);
+        intent.putExtra(ConversationActivity.CONVERSATION_ID, conv.adresseMac);
+        startActivity(intent);
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.conversationsRecyclerView.setAdapter(adapter);
+        binding.conversationsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         createNotificationChannels();
 
@@ -38,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
             context.startForegroundService(intent);
         }
 
+        AppDatabase.getInstance(this).convDao().getAllAsync().observe(this, (d) -> {
+            conversationList.clear();
+            conversationList.addAll(d);
+            adapter.notifyDataSetChanged();
+        });
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH, Manifest.permission.ACCESS_FINE_LOCATION}, BLUETOOTH_REQUEST_CODE);

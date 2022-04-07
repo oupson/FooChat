@@ -1,8 +1,10 @@
 package fr.foo.foochat.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -13,7 +15,10 @@ public interface ConvDao {
     @Query("SELECT * FROM Conversation")
     List<Conversation> getAll();
 
-    @Insert
+    @Query("SELECT * FROM Conversation")
+    LiveData<List<Conversation>> getAllAsync();
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertConv(Conversation... conversations);
 
     @Update
@@ -21,4 +26,6 @@ public interface ConvDao {
 
     @Delete
     void delete(Conversation conversation);
+
+
 }
