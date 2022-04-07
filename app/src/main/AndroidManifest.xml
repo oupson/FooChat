@@ -18,6 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FooChat">
+        <activity
+            android:name=".activities.ConversationActivity"
+            android:exported="false" />
+
         <service
             android:name=".services.BluetoothListenerService"
             android:enabled="true"

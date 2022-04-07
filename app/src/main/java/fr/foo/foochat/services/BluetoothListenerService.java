@@ -16,6 +16,9 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 import fr.foo.foochat.BuildConfig;
@@ -29,7 +32,9 @@ public class BluetoothListenerService extends Service {
     public static final UUID UUID = java.util.UUID.fromString("e250dce6-9f6f-461d-8005-e24a435992b4");
     private static final int NOTIFICATION_ID = 507;
 
-    private static class AcceptThread extends Thread {
+    private final Map<String, ConnectThread> clients = new HashMap<>();
+
+    private class AcceptThread extends Thread {
         private final BluetoothServerSocket serverSocket;
         private final BluetoothAdapter bluetoothAdapter;
 
@@ -58,11 +63,15 @@ public class BluetoothListenerService extends Service {
 
                 if (socket != null) {
                     Log.d(TAG, "new conn");
-                    try {
-                        socket.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+
+                    String mac = socket.getRemoteDevice().getAddress();
+                    if (BluetoothListenerService.this.clients.containsKey(mac)) {
+                        Objects.requireNonNull(BluetoothListenerService.this.clients.get(mac)).cancel();
                     }
+
+                    ConnectThread c = new ConnectThread(bluetoothAdapter, socket);
+                    BluetoothListenerService.this.clients.put(mac, c);
+                    c.start();
                     break;
                 }
             }
@@ -136,6 +145,16 @@ public class BluetoothListenerService extends Service {
     public void connectToDevice(BluetoothDevice device) {
         ConnectThread thread = new ConnectThread(acceptThread.bluetoothAdapter, device);
 
+        String mac = device.getAddress();
+        if (BluetoothListenerService.this.clients.containsKey(mac)) {
+            Objects.requireNonNull(BluetoothListenerService.this.clients.get(mac)).cancel();
+        }
+
+        this.clients.put(device.getAddress(), thread);
         thread.start();
+    }
+
+    public Map<String, ConnectThread> getClients() {
+        return this.clients;
     }
 }
