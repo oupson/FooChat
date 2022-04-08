@@ -4,4 +4,5 @@
     <string name="channel_foreground_service_name">Listen for messages</string>
     <string name="channel_foreground_service_description">Listen for messages</string>
 
+    <string name="compose_message">Text Message</string>
 </resources>

@@ -10,14 +10,22 @@ public class Message {
 
     }
 
-    public Message(long date, String texte, byte[] image) {
+    public Message(long date, String mac, String texte, byte[] image, boolean mine) {
         this.date = date;
+        this.mac = mac;
         this.texte = texte;
         this.image = image;
+        this.mine = mine;
     }
 
     @PrimaryKey(autoGenerate = true)
     public int id;
+
+    @ColumnInfo(name = "mac")
+    public String mac;
+
+    @ColumnInfo(name = "mine")
+    public boolean mine;
 
     @ColumnInfo(name = "date")
     public long date; //Y a pas un type Date normalement ?

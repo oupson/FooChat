@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothSocket;
 import android.util.Base64;
 import android.util.Log;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
@@ -74,6 +75,7 @@ public class ConnectThread extends Thread {
             }
 
             out = new BufferedOutputStream(mmSocket.getOutputStream());
+
             JSONObject hello = new JSONObject();
             hello.put("action", "hello");
 
@@ -96,9 +98,11 @@ public class ConnectThread extends Thread {
                 String content = new String(buffer, 0, bytesRead, StandardCharsets.UTF_8);
                 JSONObject object = new JSONObject(content);
 
+                Log.d(TAG, content);
+
                 if (object.getString("action").equals("hello")) {
                     JSONObject o = object.getJSONObject("data");
-                    AppDatabase.getInstance(null).convDao().insertConv(
+                    AppDatabase.getInstance(service.getBaseContext()).convDao().insertConv(
                             new Conversation(
                                     mmSocket.getRemoteDevice().getAddress(),
                                     o.getString("name"),
@@ -107,11 +111,13 @@ public class ConnectThread extends Thread {
                     );
                 } else if (object.getString("action").equals("message")) {
                     JSONObject o = object.getJSONObject("data");
-                    AppDatabase.getInstance(null).msgDao().insertMessage(
+                    AppDatabase.getInstance(service.getBaseContext()).msgDao().insertMessage(
                             new Message(
                                     System.currentTimeMillis(),
+                                    mmDevice.getAddress(),
                                     o.getString("content"),
-                                    Base64.decode(o.getString("image"), Base64.DEFAULT)
+                                    (o.isNull("image")) ? null : Base64.decode(o.getString("image"), Base64.DEFAULT),
+                                    false
                             )
                     );
                 }
@@ -124,6 +130,39 @@ public class ConnectThread extends Thread {
                 Log.e(TAG, "Could not close the client socket", closeException);
             }
 
+            e.printStackTrace();
+        }
+    }
+
+    public void sendMessage(String text) {
+        try {
+            JSONObject message = new JSONObject();
+            message.put("action", "message");
+
+            JSONObject messageData = new JSONObject();
+            messageData.put("content", text);
+            message.put("data", messageData);
+
+            Thread t = new Thread(() -> {
+                try {
+                    out.write(message.toString().getBytes(StandardCharsets.UTF_8));
+                    out.flush();
+
+
+                    AppDatabase.getInstance(service.getBaseContext()).msgDao().insertMessage(new Message(
+                            System.currentTimeMillis(),
+                            mmDevice.getAddress(),
+                            text,
+                            null,
+                            true
+                    ));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            t.start();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
