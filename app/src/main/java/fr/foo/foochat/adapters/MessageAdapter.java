@@ -31,10 +31,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         public void bind(Message message) {
             this.binding.messageContentTextView.setText(message.texte);
+
             if (message.mine) {
                 this.binding.getRoot().setGravity(Gravity.END);
+            }else {
+                this.binding.getRoot().setGravity(Gravity.START);
             }
-            this.binding.getRoot().setOnClickListener((v) -> MessageAdapter.this.clickListener.onItemClick(message));
+            this.binding.getRoot().setOnClickListener((v) ->  Log.d("tab", Boolean.toString(message.mine)) /*MessageAdapter.this.clickListener.onItemClick(message)*/);
         }
     }
 

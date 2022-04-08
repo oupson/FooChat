@@ -18,6 +18,9 @@ public interface ConvDao {
     @Query("SELECT * FROM Conversation")
     LiveData<List<Conversation>> getAllAsync();
 
+    @Query("SELECT * FROM CONVERSATION WHERE adresseMac = :mac")
+    LiveData<Conversation> getConv(String mac);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertConv(Conversation... conversations);
 

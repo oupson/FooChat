@@ -119,8 +119,8 @@ public class BluetoothListenerService extends Service {
         Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0); // TODO FIX
         Notification notification = new NotificationCompat.Builder(this.getBaseContext(), BuildConfig.APPLICATION_ID + ".foreground_service")
-                .setContentTitle("notificationTitle") // TODO
-                .setContentText("input") // TODO
+                .setContentTitle(getString(R.string.bluetooth_service_title))
+                .setContentText(null)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .setContentIntent(pendingIntent)

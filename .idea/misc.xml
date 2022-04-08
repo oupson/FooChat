@@ -3,13 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.188" />
         <entry key="app/src/main/res/layout/activity_conversation.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_device_discover.xml" value="0.1796875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/device_item.xml" value="1.2321428571428572" />
+        <entry key="app/src/main/res/layout/device_item.xml" value="0.5291866028708134" />
         <entry key="app/src/main/res/layout/device_items.xml" value="1.2321428571428572" />
         <entry key="app/src/main/res/layout/message_item.xml" value="0.1796875" />
         <entry key="app/src/main/res/layout/message_layout.xml" value="0.1796875" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.188" />
       </map>
     </option>
   </component>

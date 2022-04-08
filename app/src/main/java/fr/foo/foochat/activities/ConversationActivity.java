@@ -63,11 +63,20 @@ public class ConversationActivity extends AppCompatActivity {
         binding = ActivityConversationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        setSupportActionBar(binding.topAppBar);
+        //noinspection ConstantConditions
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         binding.messagesRecyclerView.setAdapter(adapter);
         binding.messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         AppDatabase db = AppDatabase.getInstance(this);
         macAddress = getIntent().getStringExtra(CONVERSATION_ID);
+
+        db.convDao().getConv(macAddress).observe(this, (conv) -> {
+            getSupportActionBar().setTitle(conv.titreConv);
+        });
 
         db.msgDao().getAllObservable(macAddress).observe(this, (msgList) -> {
             messageList.clear();

@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setSupportActionBar(binding.topAppBar);
+
         binding.conversationsRecyclerView.setAdapter(adapter);
         binding.conversationsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

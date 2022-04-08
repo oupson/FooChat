@@ -5,4 +5,6 @@
     <string name="channel_foreground_service_description">Listen for messages</string>
 
     <string name="compose_message">Text Message</string>
+
+    <string name="bluetooth_service_title">Waiting for messages</string>
 </resources>
