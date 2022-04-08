@@ -44,7 +44,8 @@ public class ConversationActivity extends AppCompatActivity {
             BluetoothListenerService.LocalBinder binder = (BluetoothListenerService.LocalBinder) service;
             ConversationActivity.this.service = binder.getService();
 
-            if (!(ConversationActivity.this.service.getClients().containsKey(macAddress) && ConversationActivity.this.service.getClients().get(macAddress).isAlive())) {
+            if (!(ConversationActivity.this.service.getClients().containsKey(macAddress)
+                    && ConversationActivity.this.service.getClients().get(macAddress).isAlive())) {
                 ConversationActivity.this.service.connectToDevice(bluetoothAdapter.getRemoteDevice(macAddress));
             }
             bound = true;
@@ -74,9 +75,9 @@ public class ConversationActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getInstance(this);
         macAddress = getIntent().getStringExtra(CONVERSATION_ID);
 
-        db.convDao().getConv(macAddress).observe(this, (conv) -> {
-            getSupportActionBar().setTitle(conv.titreConv);
-        });
+        db.convDao().getConv(macAddress).observe(this, (conv) ->
+                getSupportActionBar().setTitle(conv.titreConv)
+        );
 
         db.msgDao().getAllObservable(macAddress).observe(this, (msgList) -> {
             messageList.clear();

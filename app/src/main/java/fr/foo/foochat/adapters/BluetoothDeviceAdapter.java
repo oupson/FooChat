@@ -17,7 +17,7 @@ public class BluetoothDeviceAdapter extends RecyclerView.Adapter<BluetoothDevice
         void onItemClick(Device model);
     }
 
-    public List<Device> devicesList;
+    public final List<Device> devicesList;
     private final OnItemClickListener clickListener;
 
     public static class Device {

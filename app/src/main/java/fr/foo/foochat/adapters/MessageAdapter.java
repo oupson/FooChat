@@ -1,6 +1,5 @@
 package fr.foo.foochat.adapters;
 
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         void onItemClick(Message message);
     }
 
-    public List<Message> messageList;
+    public final List<Message> messageList;
     private final MessageAdapter.OnItemClickListener clickListener;
 
     class MessageViewHolder extends RecyclerView.ViewHolder {
@@ -37,7 +36,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             }else {
                 this.binding.getRoot().setGravity(Gravity.START);
             }
-            this.binding.getRoot().setOnClickListener((v) ->  Log.d("tab", Boolean.toString(message.mine)) /*MessageAdapter.this.clickListener.onItemClick(message)*/);
+            this.binding.getRoot().setOnClickListener((v) -> MessageAdapter.this.clickListener.onItemClick(message));
         }
     }
 

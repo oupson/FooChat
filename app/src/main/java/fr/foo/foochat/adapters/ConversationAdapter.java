@@ -16,7 +16,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         void onItemClick(Conversation conversation);
     }
 
-    public List<Conversation> conversationsList;
+    public final List<Conversation> conversationsList;
     private final ConversationAdapter.OnItemClickListener clickListener;
 
     class ConversationViewHolder extends RecyclerView.ViewHolder {

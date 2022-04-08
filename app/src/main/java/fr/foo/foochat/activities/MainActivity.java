@@ -27,7 +27,6 @@ import fr.foo.foochat.services.BluetoothListenerService;
 
 public class MainActivity extends AppCompatActivity {
     private static final int BLUETOOTH_REQUEST_CODE = 404;
-    private ActivityMainBinding binding;
     private final List<Conversation> conversationList = new ArrayList<>();
     private final ConversationAdapter adapter = new ConversationAdapter(conversationList, (conv) -> {
         Intent intent = new Intent(this, ConversationActivity.class);
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        fr.foo.foochat.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.topAppBar);

@@ -58,7 +58,7 @@ public class DeviceDiscoverActivity extends AppCompatActivity {
     };
 
 
-    List<BluetoothDeviceAdapter.Device> devices = new ArrayList<>();
+    final List<BluetoothDeviceAdapter.Device> devices = new ArrayList<>();
     private final BluetoothDeviceAdapter adapter = new BluetoothDeviceAdapter(this.devices, (device) -> {
         Log.d(TAG, device.toString());
 

@@ -33,7 +33,7 @@ public class ConnectThread extends Thread {
     private final BluetoothAdapter adapter;
     private final Action action;
     private OutputStream out;
-    private BluetoothListenerService service;
+    private final BluetoothListenerService service;
 
     @SuppressLint("MissingPermission")
     public ConnectThread(BluetoothListenerService service, BluetoothAdapter adapter, BluetoothDevice device) {
@@ -92,7 +92,7 @@ public class ConnectThread extends Thread {
 
             int bytesRead;
             byte[] buffer = new byte[4096];
-            do {
+            while (true) {
                 bytesRead = in.read(buffer);
 
                 String content = new String(buffer, 0, bytesRead, StandardCharsets.UTF_8);
@@ -121,7 +121,7 @@ public class ConnectThread extends Thread {
                             )
                     );
                 }
-            } while (true);
+            }
 
         } catch (Exception e) {
             try {
