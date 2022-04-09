@@ -1,4 +1,4 @@
-package fr.foo.foochat.services;
+package fr.oupson.foochat.services;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -21,10 +21,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-import fr.foo.foochat.BuildConfig;
-import fr.foo.foochat.R;
-import fr.foo.foochat.activities.ConnectThread;
-import fr.foo.foochat.activities.MainActivity;
+import fr.oupson.foochat.BuildConfig;
+import fr.oupson.foochat.R;
+import fr.oupson.foochat.activities.ConnectThread;
+import fr.oupson.foochat.activities.MainActivity;
 
 public class BluetoothListenerService extends Service {
     private static final String TAG = "BluetoothLService";

@@ -1,4 +1,4 @@
-package fr.foo.foochat.activities;
+package fr.oupson.foochat.activities;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.foo.foochat.BuildConfig;
-import fr.foo.foochat.adapters.MessageAdapter;
-import fr.foo.foochat.database.AppDatabase;
-import fr.foo.foochat.database.Message;
-import fr.foo.foochat.databinding.ActivityConversationBinding;
-import fr.foo.foochat.services.BluetoothListenerService;
+import fr.oupson.foochat.BuildConfig;
+import fr.oupson.foochat.adapters.MessageAdapter;
+import fr.oupson.foochat.database.AppDatabase;
+import fr.oupson.foochat.database.Message;
+import fr.oupson.foochat.databinding.ActivityConversationBinding;
+import fr.oupson.foochat.services.BluetoothListenerService;
 
 public class ConversationActivity extends AppCompatActivity {
     public static final String CONVERSATION_ID = BuildConfig.APPLICATION_ID + ".conv_id";

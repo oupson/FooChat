@@ -1,4 +1,4 @@
-package fr.foo.foochat.adapters;
+package fr.oupson.foochat.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import fr.foo.foochat.database.Conversation;
-import fr.foo.foochat.databinding.DeviceItemBinding;
+import fr.oupson.foochat.database.Conversation;
+import fr.oupson.foochat.databinding.DeviceItemBinding;
 
 public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapter.ConversationViewHolder> {
     public interface OnItemClickListener {

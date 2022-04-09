@@ -1,4 +1,4 @@
-package fr.foo.foochat.activities;
+package fr.oupson.foochat.activities;
 
 import android.Manifest;
 import android.app.NotificationChannel;
@@ -17,13 +17,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.foo.foochat.BuildConfig;
-import fr.foo.foochat.R;
-import fr.foo.foochat.adapters.ConversationAdapter;
-import fr.foo.foochat.database.AppDatabase;
-import fr.foo.foochat.database.Conversation;
-import fr.foo.foochat.databinding.ActivityMainBinding;
-import fr.foo.foochat.services.BluetoothListenerService;
+import fr.oupson.foochat.BuildConfig;
+import fr.oupson.foochat.R;
+import fr.oupson.foochat.adapters.ConversationAdapter;
+import fr.oupson.foochat.database.AppDatabase;
+import fr.oupson.foochat.database.Conversation;
+import fr.oupson.foochat.databinding.ActivityMainBinding;
+import fr.oupson.foochat.services.BluetoothListenerService;
 
 public class MainActivity extends AppCompatActivity {
     private static final int BLUETOOTH_REQUEST_CODE = 404;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fr.foo.foochat.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.topAppBar);

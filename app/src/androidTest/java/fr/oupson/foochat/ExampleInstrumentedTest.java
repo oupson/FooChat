@@ -1,4 +1,4 @@
-package fr.foo.foochat;
+package fr.oupson.foochat;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,7 +21,7 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("fr.foo.foochat", appContext.getPackageName());
+        assertEquals("fr.oupson.foochat", appContext.getPackageName());
     }
 }
 

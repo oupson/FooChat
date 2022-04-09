@@ -1,4 +1,4 @@
-package fr.foo.foochat.database;
+package fr.oupson.foochat.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

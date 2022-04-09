@@ -1,4 +1,4 @@
-package fr.foo.foochat.database;
+package fr.oupson.foochat.database;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

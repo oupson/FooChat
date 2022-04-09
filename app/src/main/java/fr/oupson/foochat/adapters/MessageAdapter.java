@@ -1,4 +1,4 @@
-package fr.foo.foochat.adapters;
+package fr.oupson.foochat.adapters;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import fr.foo.foochat.database.Message;
-import fr.foo.foochat.databinding.MessageItemBinding;
+import fr.oupson.foochat.database.Message;
+import fr.oupson.foochat.databinding.MessageItemBinding;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     public interface OnItemClickListener {

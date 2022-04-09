@@ -1,4 +1,4 @@
-package fr.foo.foochat.activities;
+package fr.oupson.foochat.activities;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
@@ -16,10 +16,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-import fr.foo.foochat.database.AppDatabase;
-import fr.foo.foochat.database.Conversation;
-import fr.foo.foochat.database.Message;
-import fr.foo.foochat.services.BluetoothListenerService;
+import fr.oupson.foochat.database.AppDatabase;
+import fr.oupson.foochat.database.Conversation;
+import fr.oupson.foochat.database.Message;
+import fr.oupson.foochat.services.BluetoothListenerService;
 
 public class ConnectThread extends Thread {
     public enum Action {

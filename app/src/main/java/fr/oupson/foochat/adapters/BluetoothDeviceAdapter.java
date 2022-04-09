@@ -1,4 +1,4 @@
-package fr.foo.foochat.adapters;
+package fr.oupson.foochat.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import java.util.Objects;
 
-import fr.foo.foochat.databinding.DeviceItemBinding;
+import fr.oupson.foochat.databinding.DeviceItemBinding;
 
 public class BluetoothDeviceAdapter extends RecyclerView.Adapter<BluetoothDeviceAdapter.DeviceViewHolder> {
     public interface OnItemClickListener {

@@ -1,4 +1,4 @@
-package fr.foo.foochat.activities;
+package fr.oupson.foochat.activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import fr.foo.foochat.adapters.BluetoothDeviceAdapter;
-import fr.foo.foochat.databinding.ActivityDeviceDiscoverBinding;
-import fr.foo.foochat.services.BluetoothListenerService;
+import fr.oupson.foochat.adapters.BluetoothDeviceAdapter;
+import fr.oupson.foochat.databinding.ActivityDeviceDiscoverBinding;
+import fr.oupson.foochat.services.BluetoothListenerService;
 
 public class DeviceDiscoverActivity extends AppCompatActivity {
     private static final String TAG = "DeviceDiscoverActivity";

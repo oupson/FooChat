@@ -1,4 +1,4 @@
-package fr.foo.foochat;
+package fr.oupson.foochat;
 
 import org.junit.Test;
 
